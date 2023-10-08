@@ -4,7 +4,12 @@ project(cache)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(cache main.cpp
-        provider/CacheProvider.cpp
-        provider/lib/CacheProvider.h
+        lib/CacheProvider.h
         provider/FIFOProvider.cpp
-        provider/lib/FIFOProvider.h)
+        lib/FIFOProvider.h
+        provider/LRUProvider.cpp
+        lib/LRUProvider.h
+        provider/RANDProvider.cpp
+        lib/RANDProvider.h
+        CachingService.cpp
+        lib/CachingService.h)

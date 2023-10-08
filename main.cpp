@@ -1,14 +1,11 @@
 #include <iostream>
-#include "provider/CacheProvider.cpp"
-#include "provider/FIFOProvider.cpp"
+#include "CachingService.cpp"
 
 using namespace std;
 
 int main() {
-
-    CacheProvider<int, int> *p = CacheProvider<int, int>::set_policy(EvictPolicy::FIFO);
-
-    cout << p->toString();
-
+    auto *service = new CachingService<string, int>();
+    service->set_evict_policy(EvictPolicy::RAND);
+    service->set_max_capacity(64);
     return 0;
 }
