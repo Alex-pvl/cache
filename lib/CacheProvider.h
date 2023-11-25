@@ -22,6 +22,9 @@ public:
         if (max_capacity <= 0) return;
         this->max_capacity = max_capacity;
     }
+    std::unordered_map<K, V> get_cache() {
+        return this->cache;
+    }
 protected:
     int max_capacity = 16;
     EvictPolicy policy;

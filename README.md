@@ -12,7 +12,3 @@
 Сравнить результаты для файлов с разным содержимым -  художественное произведение, технический текст.
 
 ![caching_service_system_design.png](caching_service_system_design.png)
-
-TODO:
-1. CachingService::run_dp_task
-2. Google тесты
