@@ -26,7 +26,6 @@ template <typename K, typename V>
 double CachingService<K, V>::run_dp_task(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
-        std::cout << "Error with opening file " << filename << std::endl;
         return 0.0;
     }
 
@@ -34,13 +33,16 @@ double CachingService<K, V>::run_dp_task(const std::string& filename) {
     double cache_hits = 0.0;
     double words_count = 0.0;
 
+    auto is_special_symbol = [](char c) {
+        return !std::isalnum(c);
+    };
+
     while (file >> word) {
+        word.erase(std::remove_if(word.begin(), word.end(), is_special_symbol), word.end());
         words_count++;
-        std::cout << "words_count: " << words_count << std::endl;
         auto it = this->provider->get_cache();
         if (it.find(word) != it.end()) {
             cache_hits++;
-            std::cout << "cache_hits: " << cache_hits << std::endl;
         } else {
             this->provider->put(word, 0);
         }

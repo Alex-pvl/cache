@@ -12,3 +12,10 @@
 Сравнить результаты для файлов с разным содержимым -  художественное произведение, технический текст.
 
 ![caching_service_system_design.png](caching_service_system_design.png)
+
+```bash
+# build
+g++ main.cpp -o cache
+# run
+./cache <filename>.txt <cache_size>
+```
